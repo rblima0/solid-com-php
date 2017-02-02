@@ -4,9 +4,7 @@ function carregaClasse($classe){
 }
 spl_autoload_register("carregaClasse");
 
-$dev = new Funcionario
-$dev->setSalario(3100);
-$dev->setCargo(new Desenvolvedor());
+$dev = new Funcionario(new Desenvolvedor(new DezOuVintePorcento()), 3100);
 
 $calculadora = new CalculadoraDeSalario();
 

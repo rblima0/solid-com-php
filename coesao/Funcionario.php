@@ -7,11 +7,16 @@ class Funcionario {
         private $dataAdmisao;
         private $salario;
 
+        public function __construct(Cargo $cargo, $salario){
+            $this->cargo = $cargo;
+            $this->salario = $salario;
+        }
+
         public function getId() {
             return $this->id;
         }
 
-        public function getNome() {
+		public function getNome() {
             return $this->nome;
         }
 
@@ -35,17 +40,9 @@ class Funcionario {
             $this->nome = $novoNome;
         }
 
-        public function setCargo(Cargo $cargo) {
-            $this->cargo = $cargo;
-        }
         public function setDataAdmisao(DateTime $data) {
             $this->dataAdmisao = $data;
         }
 
-        public function setSalario($salario) {
-            $this->salario = $salario;
-        }
-
-
-    }
+    } 
  ?>
