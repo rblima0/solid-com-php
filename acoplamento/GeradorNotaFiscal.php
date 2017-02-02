@@ -1,22 +1,25 @@
 <?php 
 class GeradorNotaFiscal {
 
-        private $enviadorEmail;
-        private $notaFiscalDao;
+        private $acoesAposGerarNota;
 
-        public function __construct(EnviadorDeEmail $enviador,notaFiscalDao $nfDao) {
-            $this->enviadorEmail = $enviador;
-            $this->notaFiscalDao = $nfDao;
+        public function __construct() {
+            $this->acoesAposGerarNota = [];
+        }
+
+        public function addAcao(AcaoAposGerarNota $acao){
+            $this->acoesAposGerarNota[] = $acao;
         }
 
         public function gera(Fatura $fatura) {
 
             $valor = $fatura->getValorMensal();
-
             $nf = new NotaFiscal($valor,$this->impostoSobreValor($valor));
 
-            	$this->enviadorEmail->envia($nf);
-            $this->notaFiscalDao->persiste($nf);
+            foreach ($this->acoesAposGerarNota as $acao) {
+                $acao->executa($nf);
+            }
+
         }
 
         private function impostoSobreValor($valor) {

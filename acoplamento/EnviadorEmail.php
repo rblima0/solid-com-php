@@ -1,7 +1,7 @@
 <?php 
-class EnviadorDeEmail {
+class EnviadorEmail implements AcaoAposGerarNota {
 
-    public function enviaEmail(NotaFiscal $nf) {
-         echo "email enviado";
+    public function executa(NotaFiscal $nf) {
+         echo "email enviado  ";
     }
 } ?>

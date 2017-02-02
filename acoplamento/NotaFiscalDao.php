@@ -1,6 +1,7 @@
 <?php 
-class NotaFiscalDao {
-    public function persiste(NotaFiscal $nf) {
+class NotaFiscalDao implements AcaoAposGerarNota {
+	
+    public function executa(NotaFiscal $nf) {
        echo "mandando pro dao";
     }
 } ?>
