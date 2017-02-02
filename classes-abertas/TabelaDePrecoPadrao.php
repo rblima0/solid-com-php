@@ -1,5 +1,5 @@
 <?php 
-class TabelaDePrecoPadrao {
+class TabelaDePrecoPadrao implements TabelaDePreco {
 
     public function descontoPara($valor) {
         if($valor > 5000) return 0.03;

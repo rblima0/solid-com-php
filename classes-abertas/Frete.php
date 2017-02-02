@@ -1,5 +1,5 @@
 <?php 
-class Frete {
+class Frete implements ServicoDeEntrega {
 
     public function para($cidade) {
 
@@ -9,4 +9,5 @@ class Frete {
 
         return 30;
     }
+}
  ?>
