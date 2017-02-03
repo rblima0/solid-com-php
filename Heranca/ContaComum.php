@@ -1,34 +1,27 @@
 <?php 
-class ContaComum 
-{
-    protected $saldo;
+class ContaComum {
 
-    public function __construct() 
-    {
-        $this->saldo = 0;
+    private $manipulador;
+
+    public function __construct() {
+        $this->manipulador = new ManipuladorDeSaldo();
     }
 
-    public function saca($valor) 
-    {
-        if($valor > 0 && $valor <= $this->saldo) {
-            $this->saldo -= $valor;
-        }else {
-            throw new Exception("Valor inválido para o saque");
-        }
+    public function saca($valor) {
+        $this->manipulador->saca($valor);
     }
 
-    public function deposita($valor) 
-    {
-        $this->saldo += $valor;
+    public function deposita($valor) {
+        $this->manipulador->deposita($valor);
     }
 
-    public function getSaldo() 
-    {
-        return $this->saldo;
+    public function getSaldo() {
+        return $this->manipulador->getSaldo();
     }
 
-    public function rende() 
-    {
-        $this->saldo *= 1.1;
+    public function rende($taxa) {
+        $this->manipulador->rende(1.1);
     }
+
+   
 } ?>

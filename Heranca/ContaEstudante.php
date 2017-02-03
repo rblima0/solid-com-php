@@ -1,22 +1,21 @@
 <?php 
-class ContaEstudante extends ContaComum 
-{
+class ContaEstudante {
+
+    private $manipulador;
     private $milhas;
 
-    public function deposita($valor) 
-    {
-        parent::deposita($valor);
+    public function __construct(){
+        $this->manipulador = new ManipuladorDeSaldo();
+    }
+
+    public function deposita($valor) {
+        $this->manipulador->deposita($valor);
         $this->milhas += $valor;
     }
 
-    public function getMilhas() 
-    {
+    public function getMilhas() {
         return $this->milhas;
     }
 
-    public function rende() 
-    {
-        throw new Exception("Conta de estudante não rende");
-    }
 }
  ?>
